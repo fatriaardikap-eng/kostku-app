@@ -1,5 +1,6 @@
 FROM php:8.2-cli
-RUN apt-get update && apt-get install -y git curl zip unzip libpng-dev libxml2-dev libzip-dev nodejs npm && docker-php-ext-install pdo pdo_mysql mbstring xml zip gd
+RUN apt-get update && apt-get install -y git curl zip unzip libxml2-dev libzip-dev nodejs npm
+RUN docker-php-ext-install pdo pdo_mysql mbstring xml zip
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 COPY . .
